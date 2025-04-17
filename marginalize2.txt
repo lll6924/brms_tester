@@ -1,18 +1,24 @@
-Chain 4:  Elapsed Time: 215.436 seconds (Warm-up)
-Chain 4:                224.44 seconds (Sampling)
-Chain 4:                439.876 seconds (Total)
+Chain 4:  Elapsed Time: 238.82 seconds (Warm-up)
+Chain 4:                238.835 seconds (Sampling)
+Chain 4:                477.655 seconds (Total)
 Chain 4:
 Warning messages:
-1: In readLines(files[which(existent)[1]]) :
-  incomplete final line found on 'C:/Users/laiji/brms/mar/marginalization.stan'
-2: There were 14421 divergent transitions after warmup. See
+1: In readLines(paste0(path, "/", files[i])) :
+  incomplete final line found on 'C:/Users/laiji/brms/inst/chunks/marginalization.stan'
+2: There were 12023 divergent transitions after warmup. See
 https://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
 to find out why this is a problem and how to eliminate them.
-3: There were 15 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. See
+3: There were 6 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. See
 https://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
 4: Examine the pairs() plot to diagnose sampling problems
 
-5: Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.
+5: The largest R-hat is 1.11, indicating chains have not mixed.
+Running the chains for more iterations may help. See
+https://mc-stan.org/misc/warnings.html#r-hat
+6: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.
+Running the chains for more iterations may help. See
+https://mc-stan.org/misc/warnings.html#bulk-ess
+7: Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.
 Running the chains for more iterations may help. See
 https://mc-stan.org/misc/warnings.html#tail-ess
  Family: gaussian
@@ -26,37 +32,38 @@ Formula: time ~ age + (age + 1 | disease * sex) + (1 | patient)
 Multilevel Hyperparameters:
 ~disease (Number of levels: 4)
                     Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sd(Intercept)           3.92      6.47     0.08    20.21 1.00     2368     4208
-sd(age)                 0.47      0.50     0.01     1.81 1.00     2529     1517
-sd(sigma_Intercept)     1.20      1.52     0.03     5.14 1.00     2199     2105
-cor(Intercept,age)     -0.03      0.57    -0.96     0.94 1.00     4622     7512
+sd(Intercept)           4.03      6.33     0.10    18.96 1.03       79    11081
+sd(age)                 0.52      0.51     0.02     1.81 1.03       96     7859
+sd(sigma_Intercept)     1.17      1.57     0.04     5.37 1.04     6050     7048
+cor(Intercept,age)     -0.10      0.58    -0.96     0.94 1.02      122    12501
 
 ~disease:sex (Number of levels: 8)
                     Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sd(Intercept)           6.01     11.30     0.09    38.97 1.00     4370     6422
-sd(age)                 0.53      0.47     0.02     1.70 1.00     2634     2128
-sd(sigma_Intercept)     1.45      0.72     0.62     3.33 1.00     1963     1743
-cor(Intercept,age)     -0.03      0.58    -0.96     0.95 1.00     4150     2986
+sd(Intercept)           6.04     10.83     0.09    38.92 1.02      230     7368
+sd(age)                 0.55      0.46     0.02     1.69 1.02      238    10839
+sd(sigma_Intercept)     1.43      0.79     0.63     3.33 1.01      332     6466
+cor(Intercept,age)      0.05      0.59    -0.95     0.94 1.04       71    11015
 
 ~patient (Number of levels: 38)
               Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sd(Intercept)     3.27      4.16     0.08    14.97 1.00     2049     1321
+sd(Intercept)     3.43      4.09     0.06    14.15 1.03      107      912
 
 ~sex (Number of levels: 2)
                     Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sd(Intercept)          11.14     26.78     0.10    81.94 1.00     3490     3835
-sd(age)                 1.35      1.39     0.08     4.75 1.00     4935     5411
-sd(sigma_Intercept)     3.85      3.47     0.11    13.11 1.01     1014      433
-cor(Intercept,age)      0.04      0.57    -0.94     0.96 1.00     3567     3030
+sd(Intercept)          10.01     23.92     0.10    73.47 1.01     1268     8314
+sd(age)                 1.56      1.67     0.09     5.26 1.04       61      957
+sd(sigma_Intercept)     6.20      6.41     0.14    21.00 1.07       39      114
+cor(Intercept,age)     -0.02      0.57    -0.95     0.95 1.01      219      948
 
 Regression Coefficients:
                 Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept          42.71     24.03     0.58    92.76 1.00     4636     8412
-sigma_Intercept     2.68      2.08    -1.80     6.39 1.01      939      268
-age                 0.15      0.45    -0.77     1.06 1.00     3739     5041
+Intercept          41.18     22.83     1.16    90.38 1.02      147    11170
+sigma_Intercept     2.08      2.58    -2.66     6.44 1.06       42      771
+age                 0.14      0.45    -0.81     1.03 1.01     1394     6045
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
-Warning message:
-There were 14421 divergent transitions after warmup. Increasing adapt_delta above 0.8 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+Warning messages:
+1: Parts of the model have not converged (some Rhats are > 1.05). Be careful when analysing the results! We recommend running more iterations and/or setting stronger priors.
+2: There were 12023 divergent transitions after warmup. Increasing adapt_delta above 0.8 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
